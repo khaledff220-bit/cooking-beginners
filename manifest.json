@@ -1,0 +1,16 @@
+{
+    "name": "طبخ للمبتدئين خطوة بخطوة",
+    "short_name": "طبخ للمبتدئين",
+    "description": "موقع تعليم الطبخ للمبتدئين بخطوات سهلة",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ff6b6b",
+    "theme_color": "#ff6b6b",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
