@@ -1,75 +1,74 @@
-
+cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طبخ للمبتدئين خطوة بخطوة - وصفات سهلة وسريعة</title>
-    <meta name="description" content="موقع متخصص في وصفات الطبخ للمبتدئين خطوة بخطوة. وصفات سهلة، سريعة، وبالصور. تعلم الطبخ من الصفر مع شرح مبسط">
-    <meta name="keywords" content="وصفات سهلة, طبخ للمبتدئين, أكلات يومية, وصفات سريعة, طبخ خطوة بخطوة, أكلات اقتصادية, وصفات عربية">
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طبخ للمبتدئين خطوة بخطوة - وصفات سهلة وسريعة</title>
+    <meta name="description" content="موقع متخصص في وصفات الطبخ للمبتدئين خطوة بخطوة. وصفات سهلة، سريعة، وبالصور. تعلم الطبخ من الصفر مع شرح مبسط">
+    <meta name="keywords" content="وصفات سهلة, طبخ للمبتدئين, أكلات يومية, وصفات سريعة, طبخ خطوة بخطوة, أكلات اقتصادية, وصفات عربية">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css?v=2">     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <header>
-        <h1>🍲 طبخ للمبتدئين خطوة بخطوة</h1>
-        <p>موقعك لتعلم الطبخ من الصفر بسهولة</p>
-    </header>
+    <header>
+        <h1>🍲 طبخ للمبتدئين خطوة بخطوة</h1>
+        <p>موقعك لتعلم الطبخ من الصفر بسهولة</p>
+    </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="arabic-food.html">🍛 الأكلات العربية</a></li>
-            <li><a href="quick-recipes.html">⚡ وصفات سريعة</a></li>
-            <li><a href="healthy-food.html">🥗 طعام صحي</a></li>
-            <li><a href="desserts.html">🍰 حلويات</a></li>
-            <li><a href="international.html">🌍 أكلات عالمية</a></li>
-        </ul>
-    </nav>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="arabic-food.html">🍛 الأكلات العربية</a></li>
+            <li><a href="quick-recipes.html">⚡ وصفات سريعة</a></li>
+            <li><a href="healthy-food.html">🥗 طعام صحي</a></li>
+            <li><a href="desserts.html">🍰 حلويات</a></li>
+            <li><a href="international.html">🌍 أكلات عالمية</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section class="welcome">
-            <h2>مرحباً بك في عالم الطبخ!</h2>
-            <p>اختر القسم الذي تريد الاستفادة منه:</p>
-        </section>
+    <main>
+        <section class="welcome">
+            <h2>مرحباً بك في عالم الطبخ!</h2>
+            <p>اختر القسم الذي تريد الاستفادة منه:</p>
+        </section>
 
-        <section class="categories">
-            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
-                <h3>🍛 الأكلات العربية</h3>
-                <p>أشهر 20 وصفة عربية تقليدية</p>
-                <a href="arabic-food.html" class="btn">استكشاف الوصفات</a>
-            </div>
+        <section class="categories">
+            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                <h3>🍛 الأكلات العربية</h3>
+                <p>أشهر 20 وصفة عربية تقليدية</p>
+                <a href="arabic-food.html" class="btn">استكشاف الوصفات</a>
+            </div>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>⚡ الوصفات السريعة</h3>
-                <p>20 وصفة في أقل من 30 دقيقة</p>
-                <a href="quick-recipes.html" class="btn">استكشاف الوصفات</a>
-            </div>
+            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>⚡ الوصفات السريعة</h3>
+                <p>20 وصفة في أقل من 30 دقيقة</p>
+                <a href="quick-recipes.html" class="btn">استكشاف الوصفات</a>
+            </div>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
-                <h3>🥗 الطعام الصحي</h3>
-                <p>20 وصفة صحية ومغذية</p>
-                <a href="healthy-food.html" class="btn">استكشاف الوصفات</a>
-            </div>
+            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                <h3>🥗 الطعام الصحي</h3>
+                <p>20 وصفة صحية ومغذية</p>
+                <a href="healthy-food.html" class="btn">استكشاف الوصفات</a>
+            </div>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="400">
-                <h3>🍰 الحلويات</h3>
-                <p>20 وصفة حلويات سهلة</p>
-                <a href="desserts.html" class="btn">استكشاف الوصفات</a>
-            </div>
+            <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                <h3>🍰 الحلويات</h3>
+                <p>20 وصفة حلويات سهلة</p>
+                <a href="desserts.html" class="btn">استكشاف الوصفات</a>
+            </div>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="500">
-                <h3>🌍 الأكلات العالمية</h3>
-                <p>20 وصفة من حول العالم</p>
-                <a href="international.html" class="btn">استكشاف الوصفات</a>
-            </div>
-        </section>
-    </main>
-    
-    <button id="installButton" title="تثبيت التطبيق">⬇️ تثبيت</button> 
+            <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+                <h3>🌍 الأكلات العالمية</h3>
+                <p>20 وصفة من حول العالم</p>
+                <a href="international.html" class="btn">استكشاف الوصفات</a>
+            </div>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <button id="installButton" title="تثبيت التطبيق">⬇️ تثبيت</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
 EOF
