@@ -1,3 +1,4 @@
+cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -7,7 +8,8 @@
     <meta name="description" content="موقع متخصص في وصفات الطبخ للمبتدئين خطوة بخطوة. وصفات سهلة، سريعة، وبالصور. تعلم الطبخ من الصفر مع شرح مبسط">
     <meta name="keywords" content="وصفات سهلة, طبخ للمبتدئين, أكلات يومية, وصفات سريعة, طبخ خطوة بخطوة, أكلات اقتصادية, وصفات عربية">
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./theme-v3.css">     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="./theme-v3.css"> 
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
@@ -54,19 +56,17 @@
             <div class="category-card" data-aos="fade-up" data-aos-delay="400">
                 <h3>🍰 الحلويات</h3>
                 <p>20 وصفة حلويات سهلة</p>
-                <a href="desserts.html" class="btn">استكشاف الوصفات</a>
             </div>
 
             <div class="category-card" data-aos="fade-up" data-aos-delay="500">
                 <h3>🌍 الأكلات العالمية</h3>
                 <p>20 وصفة من حول العالم</p>
-                <a href="international.html" class="btn">استكشاف الوصفات</a>
             </div>
         </section>
     </main>
 
     <button id="installButton" title="تثبيت التطبيق">⬇️ تثبيت</button>
-
     <script src="script.js"></script>
 </body>
 </html>
+EOF
