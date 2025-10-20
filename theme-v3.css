@@ -14,7 +14,7 @@
     /* ظلال البروز (Depth Shadows) */
     --shadow-light: #FFFFFF;
     --shadow-dark: #A3A3A3;
-    
+
     /* الخطوط العربية المختارة */
     --font-heading: 'Almarai', sans-serif;
     --font-body: 'Tajawal', sans-serif;
@@ -122,7 +122,7 @@ header h1 {
     border-radius: 20px;
     text-align: center;
     cursor: pointer;
-    
+
     /* تأثير البروز (الظلال المزدوجة) */
     box-shadow: 8px 8px 16px var(--shadow-dark), 
                 -8px -8px 16px var(--shadow-light); 
@@ -166,7 +166,7 @@ header h1 {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
-    
+
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s;
 }
@@ -198,7 +198,7 @@ header h1 {
     text-align: center;
     line-height: 1;
     z-index: 999;
-    
+
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.3s;
 }
@@ -262,7 +262,7 @@ header h1 {
     padding: 1.5rem;
     border-radius: 15px;
     margin-bottom: 1.5rem;
-    
+
     box-shadow: 4px 4px 8px var(--shadow-dark), 
                 -4px -4px 8px var(--shadow-light);
     position: relative;
