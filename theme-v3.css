@@ -1,3 +1,4 @@
+cat << 'EOF' > theme-v3.css
 /* ------------------------------------------- */
 /* 1. استيراد الخطوط والألوان الأساسية (Neo-Morphic Theming) */
 /* ------------------------------------------- */
@@ -30,7 +31,8 @@ body {
     font-family: var(--font-body);
     background-color: var(--background-color);
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.7; /* زيادة ارتفاع السطر للقراءة */
+    font-size: 1.05rem; /* تكبير الخط الأساسي قليلاً */
 }
 
 /* ------------------------------------------- */
@@ -43,12 +45,11 @@ header {
     text-align: center;
     padding: 3rem 1rem 1rem;
     font-family: var(--font-heading);
-    /* تطبيق ظل خفيف جداً على العنوان فقط */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     color: var(--primary-color);
 }
 
@@ -119,7 +120,7 @@ header h1 {
 .category-card {
     background: var(--background-color);
     padding: 1.5rem;
-    border-radius: 20px; /* زيادة الانحناء */
+    border-radius: 20px;
     text-align: center;
     cursor: pointer;
     
@@ -132,15 +133,13 @@ header h1 {
     transform: translateY(20px); 
 }
 
-/* تأثير عند الضغط أو التفاعل (Press Effect) */
 .category-card:hover {
     /* محاكاة للضغط */
     box-shadow: inset 5px 5px 10px var(--shadow-dark), 
                 inset -5px -5px 10px var(--shadow-light);
-    transform: none; /* إيقاف التحرك للأعلى */
+    transform: none;
 }
 
-/* تأثير عند ظهور البطاقة (JavaScript) */
 .category-card.show {
     opacity: 1;
     transform: translateY(0);
@@ -156,29 +155,32 @@ header h1 {
 .category-card p {
     color: var(--text-light);
     margin-bottom: 1rem;
-    font-size: 0.95rem;
+    font-size: 1rem; /* تم زيادة حجم الخط هنا أيضاً */
 }
 
-/* زر (استكشاف الوصفات) - تصميم بارز */
+/* زر (استكشاف الوصفات) - تصميم متدرج وجذاب */
 .btn {
     display: inline-block;
-    background: var(--primary-color);
+    /* التدرج اللوني الجديد */
+    background: linear-gradient(145deg, var(--primary-color), #FF5722); 
     color: white;
     padding: 0.7rem 1.5rem;
+    border: none;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 700;
     
-    /* تصميم بارز ومظلل */
+    /* ظل بارز للزر */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s;
 }
 
 .btn:hover {
-    background: #FF8A65; /* لون أفتح عند التفاعل */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* ظل أقل عند التفاعل */
+    background: linear-gradient(145deg, #FF8A65, var(--primary-color)); /* تدرج أفتح عند التفاعل */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     transform: translateY(1px);
 }
+
 
 /* ------------------------------------------- */
 /* 5. تصميم PWA وزر التثبيت (بارز ومستقل) */
@@ -235,3 +237,93 @@ header h1 {
         padding: 1rem;
     }
 }
+
+/* ------------------------------------------- */
+/* 7. أنماط صفحات الوصفات (Recipe Pages) */
+/* ------------------------------------------- */
+
+.recipe-container {
+    padding: 2rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.recipe-container h2 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* تنسيق الخطوات المرقمة (Ordered List) */
+.steps-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.steps-list li {
+    background: var(--shadow-light); /* خلفية بيضاء نقية للخطوة */
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    
+    /* تأثير بروز خفيف للخطوات */
+    box-shadow: 4px 4px 8px var(--shadow-dark), 
+                -4px -4px 8px var(--shadow-light);
+    position: relative;
+    padding-right: 4.5rem; /* مساحة لرقم الخطوة */
+    line-height: 1.8;
+}
+
+/* تنسيق رقم الخطوة */
+.steps-list li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    width: 30px;
+    height: 30px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* إعادة تعيين العداد قبل القائمة */
+.recipe-container {
+    counter-reset: step-counter;
+}
+
+.details-box {
+    background: #F0F0F0; /* خلفية رمادية فاتحة للمعلومات الإضافية */
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-right: 4px solid var(--secondary-color);
+    margin-top: 1.5rem;
+    color: var(--text-dark);
+}
+
+.details-box p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.details-box strong {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+}
+
+.details-box ul {
+    list-style-type: '⚡ '; /* أيقونة مميزة للقائمة */
+    padding-right: 1.5rem;
+    margin-top: 0.5rem;
+}
+EOF
