@@ -322,3 +322,13 @@ header h1 {
     padding-right: 1.5rem;
     margin-top: 0.5rem;
 }
+/*
+ * -------------------------------------------------------------
+ * Fix for sequential numbering issue inside recipe steps
+ * -------------------------------------------------------------
+ */
+.recipe-container ol.steps-list {
+    /* This line should reset the numbering for every ordered list */
+    counter-reset: steps 0; 
+    /* Ensure the steps start from 1 explicitly */
+}
