@@ -59,7 +59,7 @@ header p {
 .main-nav {
     background-color: #333;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-    position: sticky; /* لجعل شريط التنقل ثابتاً أثناء التمرير */
+    position: abslout; /* لجعل شريط التنقل ثابتاً أثناء التمرير */
     top: 0;
     z-index: 1000;
 }
