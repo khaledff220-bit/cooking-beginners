@@ -332,3 +332,13 @@ header h1 {
     counter-reset: steps 0; 
     /* Ensure the steps start from 1 explicitly */
 }
+/*
+ * -------------------------------------------------------------
+ * FINAL FIX: Force remove any automatic list numbering
+ * -------------------------------------------------------------
+ */
+.recipe-container .steps-list {
+    list-style: none !important; /* Forces the removal of automatic bullets/numbers */
+    margin-right: 0; /* Adjust margin if needed after removing list-style */
+    padding-right: 0; /* Adjust padding if needed after removing list-style */
+}
