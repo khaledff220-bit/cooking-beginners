@@ -1,69 +1,56 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طبخ للمبتدئين خطوة بخطوة - وصفات سهلة وسريعة</title>
-    <meta name="description" content="موقع متخصص في وصفات الطبخ للمبتدئين خطوة بخطوة. وصفات سهلة، سريعة، وبالصور. تعلم الطبخ من الصفر مع شرح مبسط">
-    <meta name="keywords" content="وصفات سهلة, طبخ للمبتدئين, أكلات يومية, وصفات سريعة, طبخ خطوة بخطوة, أكلات اقتصادية, وصفات عربية">
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./theme-v3.css"> 
-    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرئيسية - وصفات طبخ للمبتدئين</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./theme-v3.css">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <header>
-        <h1>🍲 طبخ للمبتدئين خطوة بخطوة</h1>
-        <p>موقعك لتعلم الطبخ من الصفر بسهولة</p>
-    </header>
+    <header>
+        <h1>📖 دليل الطبخ للمبتدئين</h1>
+        <p>اكتشف 100 وصفة سهلة ومضمونة مقسمة إلى 5 أقسام رئيسية</p>
+    </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html" class="active">الرئيسية</a></li>
-            <li><a href="arabic-food.html">🍛 الأكلات العربية</a></li>
-            <li><a href="quick-recipes.html">⚡ وصفات سريعة</a></li>
-            <li><a href="healthy-food.html">🥗 طعام صحي</a></li>
-            <li><a href="desserts.html">🍰 حلويات</a></li>
-            <li><a href="international.html">🌍 أكلات عالمية</a></li>
-        </ul>
-    </nav>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="arabic-food.html">🍛 الأكلات العربية</a></li>
+            <li><a href="quick-recipes.html">⚡ وصفات سريعة</a></li>
+            <li><a href="healthy-food.html">🥗 طعام صحي</a></li>
+            <li><a href="desserts.html">🍰 حلويات</a></li>
+            <li><a href="international.html">🌍 أكلات عالمية</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section class="welcome">
-            <h2>مرحباً بك في عالم الطبخ!</h2>
-            <p>اختر القسم الذي تريد الاستفادة منه:</p>
-        </section>
+    <main class="sections-grid">
+        
+        <a href="arabic-food.html" class="card">
+            <h2>🍛 الأكلات العربية (20 وصفة)</h2>
+            <p>من المندي إلى الكبسة: أطباق تقليدية بخطوات بسيطة.</p>
+        </a>
 
-        <section class="categories">
-            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
-                <h3>🍛 الأكلات العربية</h3>
-                <p>أشهر 20 وصفة عربية تقليدية</p>
-                <a href="arabic-food.html" class="btn">استكشاف الوصفات</a>
-            </div>
+        <a href="quick-recipes.html" class="card">
+            <h2>⚡ وصفات سريعة (20 وصفة)</h2>
+            <p>وجبات لا تستغرق أكثر من 30 دقيقة، مثالية لليوم المزدحم.</p>
+        </a>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
-                <h3>⚡ الوصفات السريعة</h3>
-                <p>20 وصفة في أقل من 30 دقيقة</p>
-                <a href="quick-recipes.html" class="btn">استكشاف الوصفات</a>
-            </div>
+        <a href="healthy-food.html" class="card">
+            <h2>🥗 طعام صحي (20 وصفة)</h2>
+            <p>وجبات خفيفة، قليلة السعرات، وغنية بالعناصر الغذائية.</p>
+        </a>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
-                <h3>🥗 الطعام الصحي</h3>
-                <p>20 وصفة صحية ومغذية</p>
-                <a href="healthy-food.html" class="btn">استكشاف الوصفات</a>
-            </div>
+        <a href="desserts.html" class="card">
+            <h2>🍰 حلويات شهية (20 وصفة)</h2>
+            <p>حلويات باردة ومخبوزات سهلة للمناسبات أو التحلية اليومية.</p>
+        </a>
 
-            <div class="category-card" data-aos="fade-up" data-aos-delay="400">
-                <h3>🍰 الحلويات</h3>
-                <p>20 وصفة حلويات سهلة</p>
-            </div>
-
-            <div class="category-card" data-aos="fade-up" data-aos-delay="500">
-                <h3>🌍 الأكلات العالمية</h3>
-                <p>20 وصفة من حول العالم</p>
-            </div>
-        </section>
-    </main>
-
-    <button id="installButton" title="تثبيت التطبيق">⬇️ تثبيت</button>
-    <script src="script.js"></script>
+        <a href="international.html" class="card">
+            <h2>🌍 أكلات عالمية (20 وصفة)</h2>
+            <p>اكتشف أطباقاً عالمية مشهورة من إيطاليا والمكسيك والصين.</p>
+        </a>
+    </main>
 </body>
 </html>
