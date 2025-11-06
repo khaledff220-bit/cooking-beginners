@@ -75,6 +75,7 @@ header p {
     display: flex;
     flex-wrap: wrap; /* للسماح للروابط بالنزول لسطر جديد في شاشات الهاتف */
     justify-content: center;
+    possition: abslout
 }
 
 .main-nav li {
