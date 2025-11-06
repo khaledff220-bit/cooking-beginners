@@ -3,464 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأكلات العربية | مطبخ المبتدئين</title>
-    <!-- تضمين Tailwind CSS لتصميم عصري ومتجاوب -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* تعيين الخطوط العربية والإنجليزية */
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #1a1a1a; /* خلفية داكنة */
-            color: #f3f4f6;
-            direction: rtl;
-        }
-        /* تصميم صورة الوصفة في القائمة الجانبية */
-        .recipe-image-thumb {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 2px solid #374151;
-        }
-        /* تصميم الصورة الرئيسية للوصفة */
-        .recipe-main-image {
-            width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-        }
-        /* تنسيق القائمة الجانبية لسهولة القراءة */
-        #recipe-list a {
-            transition: all 0.3s ease;
-        }
-        #recipe-list a.active {
-            background-color: #374151;
-            border-right-color: #10b981; /* لون أخضر جذاب */
-        }
-        #recipe-details ul, #recipe-details ol {
-            padding-right: 1.5rem;
-            margin-top: 0.5rem;
-        }
-    </style>
+    <title>الرئيسية - وصفات طبخ للمبتدئين</title>
+    <meta name="google-site-verification" content="1YBP2sbUMH1uIADFn88vYgs-UHOOlEoYkxtp9tixugE" />
+    <!-- START SEO Meta Tags -->
+    <meta name="description" content="دليل الطبخ للمبتدئين: اكتشف 100 وصفة سهلة وسريعة ومضمونة. أكلات عربية، حلويات، ووصفات عالمية للمبتدئين.">
+    <meta name="keywords" content="وصفات طبخ, طبخ للمبتدئين, اكلات سريعة, اكلات عربية, حلويات سهلة, وصفات صحية, مطبخ">
+    <!-- END SEO Meta Tags -->
+    <!-- رابط الخطوط الآن موجود مرة واحدة فقط -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./theme-v3.css">
+    <link rel="manifest" href="manifest.json">
 </head>
-<body class="min-h-screen">
-
-    <!-- شريط التنقل (Navigation Bar) -->
-    <header class="bg-gray-900 shadow-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="flex-shrink-0 text-xl font-bold text-green-400 hover:text-green-300 transition duration-300">
-                    <span class="text-3xl">🍲</span> مطبخ المبتدئين
-                </a>
-                <nav class="hidden sm:flex space-x-4 space-x-reverse">
-                    <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300">الصفحة الرئيسية</a>
-                    <a href="arabic-food-category.html" class="text-white bg-green-600 px-3 py-2 rounded-md text-sm font-medium transition duration-300">الأكلات العربية</a>
-                </nav>
-            </div>
-        </div>
+<body>
+    <header>
+        <h1>📖 دليل الطبخ للمبتدئين</h1>
+        <p class="site-url-link">🌐 رابط الموقع النهائي: <a href="https://cooking-beginners.vercel.app/" target="_blank">https://cooking-beginners.vercel.app/</a></p>
+        <p>اكتشف 100 وصفة سهلة ومضمونة مقسمة إلى 5 أقسام رئيسية</p>
     </header>
 
-    <!-- المحتوى الرئيسي - القائمة الجانبية وتفاصيل الوصفة -->
-    <div class="flex flex-col md:flex-row max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 gap-8">
-        
-        <!-- القائمة الجانبية للوصفات (Sidebar) -->
-        <aside class="w-full md:w-1/3 bg-gray-800 rounded-xl p-4 shadow-lg h-full sticky top-20">
-            <h2 class="text-2xl font-bold text-white mb-4 border-b border-gray-700 pb-2">قائمة الوصفات</h2>
-            <div id="recipe-list" class="space-y-2 max-h-[80vh] overflow-y-auto pr-2">
-                <!-- سيتم ملؤها بـ JavaScript -->
-            </div>
-        </aside>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html" class="active">الرئيسية</a></li>
+            <li><a href="arabic-food.html">🍛 الأكلات العربية</a></li>
+            <li><a href="quick-recipes.html">⚡ وصفات سريعة</a></li>
+            <li><a href="healthy-food.html">🥗 طعام صحي</a></li>
+            <li><a href="desserts.html">🍰 حلويات</a></li>
+            <li><a href="international.html">🌍 أكلات عالمية</a></li>
+        </ul>
+    </nav>
 
-        <!-- منطقة تفاصيل الوصفة الرئيسية -->
-        <main class="w-full md:w-2/3 bg-gray-900 rounded-xl p-6 shadow-xl">
-            <h1 class="text-3xl font-extrabold text-white mb-4 border-b border-gray-700 pb-2">تفاصيل الوصفة</h1>
-            <div id="recipe-details">
-                <p class="text-gray-400 text-lg mt-8 text-center p-10">
-                    الرجاء اختيار وصفة من القائمة الجانبية للبدء بالطهي.
-                </p>
-                <!-- ستظهر تفاصيل الوصفة هنا -->
-            </div>
-        </main>
-    </div>
+    <main class="sections-grid">
 
-    <script>
-        // دالة مساعدة لنسخ النص إلى الحافظة
-        function copyTextToClipboard(text) {
-            const tempElement = document.createElement('textarea');
-            tempElement.value = text.trim();
-            tempElement.setAttribute('readonly', '');
-            tempElement.style.position = 'absolute';
-            tempElement.style.left = '-9999px';
-            document.body.appendChild(tempElement);
-            tempElement.select();
+        <!-- بطاقة الأكلات العربية -->
+        <a href="arabic-food.html" class="card">
+            <h2>🍛 الأكلات العربية (20 وصفة)</h2>
+            <p>من المندي إلى الكبسة: أطباق تقليدية بخطوات بسيطة.</p>
+        </a>
 
-            try {
-                document.execCommand('copy');
-                return true;
-            } catch (err) {
-                console.error('Copy failed:', err);
-                return false;
-            } finally {
-                document.body.removeChild(tempElement);
-            }
-        }
+        <!-- التعديل هنا: إضافة الفئة card-quick-recipes -->
+        <a href="quick-recipes.html" class="card card-quick-recipes">
+            <h2>⚡ وصفات سريعة (20 وصفة)</h2>
+            <p>وجبات لا تستغرق أكثر من 30 دقيقة، مثالية لليوم المزدحم.</p>
+        </a>
 
-        // مصفوفة الوصفات مع روابط الصور المحدثة
-        const recipes = [
-            {
-                id: 1,
-                name: "المنسف الأردني",
-                description: "الطبق الوطني للأردن، يُعد من لحم الضأن المطبوخ في مرق الجميد (لبن مجفف)، ويقدم فوق الأرز وخبز الشراك.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Mansaf",
-                ingredients: [
-                    "1 كجم لحم ضأن مقطع",
-                    "1 كجم جميد (لبن مجفف)",
-                    "2 كوب أرز مصري",
-                    "خبز شراك (مرقوق)",
-                    "لوز وصنوبر مقلي للتزيين"
-                ],
-                steps: [
-                    "نقع الجميد لعدة ساعات ثم طبخه مع قطع اللحم حتى ينضج.",
-                    "طهي الأرز بالطريقة المعتادة.",
-                    "فرد خبز الشراك في طبق كبير، وسقيه بقليل من مرق الجميد.",
-                    "وضع الأرز فوق الخبز، وترتيب قطع اللحم فوق الأرز، ثم سقيها بالمرق.",
-                    "التزيين باللوز والصنوبر المقلي."
-                ],
-                prepTime: "60 دقيقة",
-                cookTime: "120 دقيقة"
-            },
-            {
-                id: 2,
-                name: "الكبسة السعودية",
-                description: "طبق الأرز واللحم أو الدجاج الأكثر شهرة في السعودية، يتميز بتوابله الغنية مثل اللومي (الليمون الأسود) والهيل والقرنفل.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Kabsa",
-                ingredients: [
-                    "1 دجاجة كاملة أو 1 كجم لحم ضأن",
-                    "3 كوب أرز بسمتي",
-                    "بصل وطماطم مقطعة",
-                    "بهارات الكبسة، لومي، هيل، وقرنفل"
-                ],
-                steps: [
-                    "سلق اللحم أو الدجاج مع البهارات الكاملة حتى ينضج.",
-                    "إخراج اللحم وتحميره في الفرن قليلاً.",
-                    "طهي الأرز في مرق اللحم أو الدجاج المتبقي.",
-                    "تقديم الأرز وفوقه اللحم، وتزيينه بالزبيب والمكسرات."
-                ],
-                prepTime: "30 دقيقة",
-                cookTime: "90 دقيقة"
-            },
-            {
-                id: 3,
-                name: "المقلوبة الفلسطينية",
-                description: "طبق من الأرز واللحم (أو الدجاج) والخضروات المقلية (باذنجان، بطاطس، قرنبيط) يُقلب عند التقديم ليبدو كقبة.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Maqluba",
-                ingredients: [
-                    "قطع دجاج أو لحم",
-                    "2 كوب أرز",
-                    "باذنجان وبطاطس وقرنبيط مقلية",
-                    "بهارات مشكلة وقرفة"
-                ],
-                steps: [
-                    "ترتيب قطع اللحم والخضروات المقلية في قاع القدر.",
-                    "إضافة الأرز فوقها، ثم سكب المرق حتى يغمر الأرز.",
-                    "الطهي حتى ينضج الأرز ثم قلب القدر بحذر عند التقديم."
-                ],
-                prepTime: "45 دقيقة",
-                cookTime: "60 دقيقة"
-            },
-            {
-                id: 4,
-                name: "الفتوش اللبناني",
-                description: "سلطة منعشة مشهورة في بلاد الشام، تتميز بخبز البيتا المقلي أو المحمص والخضروات الموسمية مع صلصة السماق.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Fattoush",
-                ingredients: [
-                    "خس، طماطم، خيار، فجل",
-                    "خبز بيتا مقلي أو محمص",
-                    "أوراق نعناع وبقدونس",
-                    "زيت زيتون، عصير ليمون، سماق"
-                ],
-                steps: [
-                    "تقطيع الخضروات وتقليبها مع الأعشاب.",
-                    "إعداد الصلصة من الزيت والليمون والسماق.",
-                    "خلط الخضروات بالصلصة وإضافة قطع الخبز المحمص قبل التقديم مباشرة."
-                ],
-                prepTime: "20 دقيقة",
-                cookTime: "0 دقيقة"
-            },
-            {
-                id: 5,
-                name: "المحشي المصري (ورق العنب)",
-                description: "أوراق العنب المحشوة بخليط من الأرز واللحم المفروم والبهارات، وتُطهى في مرق حامض.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Mahshi",
-                ingredients: [
-                    "ورق عنب محفوظ",
-                    "أرز، لحم مفروم",
-                    "طماطم وبصل وشبت وبقدونس مفرومين",
-                    "بهارات وفلفل أسود"
-                ],
-                steps: [
-                    "خلط مكونات الحشوة جيداً.",
-                    "لف الحشوة داخل أوراق العنب بإحكام.",
-                    "رص الأصابع في القدر وطهيها في مرق بنكهة الليمون أو الطماطم.",
-                ],
-                prepTime: "90 دقيقة",
-                cookTime: "90 دقيقة"
-            },
-            // تمت إضافة 5 وصفات أخرى للمحتوى
-            {
-                id: 6,
-                name: "الهريس الإماراتي",
-                description: "طبق تقليدي من القمح المهروس ولحم الضأن أو الدجاج، يُطهى لساعات طويلة ليصبح قوامه ناعماً وكريمياً.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Harees",
-                ingredients: [
-                    "1 كوب قمح مقشور",
-                    "نصف كجم لحم ضأن أو دجاج",
-                    "ماء وملح",
-                    "سمن بلدي للتزيين"
-                ],
-                steps: [
-                    "نقع القمح طوال الليل.",
-                    "طهي القمح واللحم مع الماء والملح على نار هادئة لعدة ساعات حتى يذوب اللحم تقريباً.",
-                    "هرس الخليط جيداً للحصول على قوام ناعم.",
-                    "التقديم مع السمن البلدي ورشة من القرفة (اختياري)."
-                ],
-                prepTime: "8 ساعات (نقع)",
-                cookTime: "4 ساعات"
-            },
-            {
-                id: 7,
-                name: "المجبوس الكويتي",
-                description: "طبق مشابه للكبسة، لكنه يتميز بطريقة تحضير معقدة للبهارات واستخدام ماء الورد وماء الزعفران لإضافة نكهة فريدة.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Machboos",
-                ingredients: [
-                    "دجاج أو لحم",
-                    "أرز بسمتي",
-                    "بصل وطماطم",
-                    "بهارات مجبوس، ماء ورد وزعفران"
-                ],
-                steps: [
-                    "يُسلق اللحم مع البهارات ويُحمر قليلاً.",
-                    "يُطهى الأرز في المرق مع الزعفران وماء الورد.",
-                    "يُقدم مع اللحم والـ 'حشو' (بصل مقلي ومتبل)."
-                ],
-                prepTime: "40 دقيقة",
-                cookTime: "100 دقيقة"
-            },
-            {
-                id: 8,
-                name: "الثريد المغربي (الرفيسة)",
-                description: "طبق تقليدي مغربي يتكون من قطع خبز 'المسمن' الممزوجة بمرق الدجاج الغني والمتبل بالعدس والحلبة والبهارات المغربية.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Rfissa",
-                ingredients: [
-                    "دجاج بلدي",
-                    "خبز مسمن (عجينة المسمن)",
-                    "عدس وحلبة",
-                    "سمن حار، وتوابل (رأس الحانوت)"
-                ],
-                steps: [
-                    "إعداد خبز المسمن وتقطيعه لقطع صغيرة.",
-                    "طهي الدجاج في مرق البصل والعدس والحلبة والبهارات.",
-                    "سقي قطع المسمن بالمرق الغني وتقديم الدجاج في الأعلى."
-                ],
-                prepTime: "60 دقيقة",
-                cookTime: "120 دقيقة"
-            },
-            {
-                id: 9,
-                name: "المسقعة المصرية",
-                description: "طبق شعبي يتكون من طبقات الباذنجان المقلي واللحم المفروم وصوص الطماطم والبشاميل (في بعض الوصفات)، ويُخبز بالفرن.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Moussaka",
-                ingredients: [
-                    "3 حبات باذنجان مقلي",
-                    "نصف كجم لحم مفروم",
-                    "صوص طماطم سميك",
-                    "بصل وثوم مفروم"
-                ],
-                steps: [
-                    "قلي شرائح الباذنجان.",
-                    "تحضير اللحم المفروم والبصل.",
-                    "وضع طبقات من الباذنجان، اللحم، وصوص الطماطم في صينية.",
-                    "الخبز في الفرن حتى يغلي المزيج وينضج تماماً."
-                ],
-                prepTime: "30 دقيقة",
-                cookTime: "45 دقيقة"
-            },
-            {
-                id: 10,
-                name: "الشكشوكة التونسية",
-                description: "طبق بيض مطبوخ في صلصة طماطم حارة مع الفلفل والبصل والتوابل، مثالي كوجبة فطور أو عشاء خفيف.",
-                imageUrl: "https://placehold.co/800x600/10b981/ffffff?text=Shakshuka",
-                ingredients: [
-                    "4 بيضات",
-                    "طماطم مفرومة",
-                    "فلفل أخضر وبصل",
-                    "ثوم وكمون وبابريكا"
-                ],
-                steps: [
-                    "تشويح البصل والفلفل والثوم.",
-                    "إضافة الطماطم والبهارات وتركها تتسبك.",
-                    "عمل فجوات في الصلصة وكسر البيض فيها.",
-                    "تغطية المقلاة وطهي البيض حتى يتماسك الصفار قليلاً."
-                ],
-                prepTime: "15 دقيقة",
-                cookTime: "20 دقيقة"
-            }
-            // يمكن إضافة المزيد من الوصفات هنا...
-        ];
+        <!-- بطاقة الطعام الصحي -->
+        <a href="healthy-food.html" class="card">
+            <h2>🥗 طعام صحي (20 وصفة)</h2>
+            <p>وجبات خفيفة، قليلة السعرات، وغنية بالعناصر الغذائية.</p>
+        </a>
 
-        // ------------------------------------------
-        // وظائف عرض وتفاصيل الوصفات
-        // ------------------------------------------
+        <!-- بطاقة الحلويات -->
+        <a href="desserts.html" class="card">
+            <h2>🍰 حلويات شهية (20 وصفة)</h2>
+            <p>حلويات باردة ومخبوزات سهلة للمناسبات أو التحلية اليومية.</p>
+        </a>
 
-        const recipeListDiv = document.getElementById('recipe-list');
-        const recipeDetailsDiv = document.getElementById('recipe-details');
-        let activeRecipeId = null;
-
-        /**
-         * يعرض قائمة الوصفات في الشريط الجانبي.
-         * @param {Array<Object>} recipesArray - مصفوفة الوصفات المراد عرضها.
-         */
-        function displayRecipes(recipesArray) {
-            recipeListDiv.innerHTML = ''; // تفريغ القائمة الحالية
-
-            if (recipesArray.length === 0) {
-                recipeListDiv.innerHTML = '<p class="text-gray-400 text-center py-4">لا توجد وصفات مطابقة.</p>';
-                return;
-            }
-
-            recipesArray.forEach(recipe => {
-                const link = document.createElement('a');
-                link.href = "#"; // يمنع إعادة تحميل الصفحة
-                link.className = `flex items-center p-3 rounded-lg hover:bg-gray-700 border-r-4 border-transparent ${recipe.id === activeRecipeId ? 'active' : ''}`;
-                link.onclick = (e) => {
-                    e.preventDefault();
-                    displayRecipeDetails(recipe);
-                    // تحديث حالة النشاط
-                    document.querySelectorAll('#recipe-list a').forEach(el => el.classList.remove('active'));
-                    link.classList.add('active');
-                    activeRecipeId = recipe.id;
-                };
-
-                link.innerHTML = `
-                    <img src="${recipe.imageUrl}" alt="صورة ${recipe.name}" class="recipe-image-thumb ml-3">
-                    <span class="text-white font-medium text-lg">${recipe.name}</span>
-                `;
-                recipeListDiv.appendChild(link);
-            });
-        }
-
-        /**
-         * يعرض تفاصيل وصفة محددة في المنطقة الرئيسية.
-         * @param {Object} recipe - كائن الوصفة المراد عرض تفاصيلها.
-         */
-        function displayRecipeDetails(recipe) {
-            // كود JSON-LD لتحسين محركات البحث
-            const jsonLdScript = `
-                <script type="application/ld+json">
-                {
-                  "@context": "https://schema.org/",
-                  "@type": "Recipe",
-                  "name": "${recipe.name}",
-                  "image": "${recipe.imageUrl}",
-                  "description": "${recipe.description}",
-                  "recipeIngredient": ${JSON.stringify(recipe.ingredients)},
-                  "recipeInstructions": ${JSON.stringify(recipe.steps.map(step => ({ "@type": "HowToStep", "text": step })))}
-                }
-                </script>
-            `;
-
-            // HTML لتفاصيل الوصفة
-            recipeDetailsDiv.innerHTML = `
-                ${jsonLdScript}
-                <div class="mb-6">
-                    <h2 class="text-4xl font-extrabold text-green-400 mb-2">${recipe.name}</h2>
-                    <p class="text-gray-400 text-lg">${recipe.description}</p>
-                </div>
-                
-                <!-- صورة الوصفة الرئيسية -->
-                <img src="${recipe.imageUrl}" alt="صورة ${recipe.name}" class="recipe-main-image">
-
-                <!-- معلومات الوقت -->
-                <div class="flex justify-around bg-gray-800 p-4 rounded-lg mb-6">
-                    <div class="text-center">
-                        <p class="text-gray-400 text-sm">وقت التحضير</p>
-                        <p class="text-white font-bold text-xl">${recipe.prepTime}</p>
-                    </div>
-                    <div class="text-center">
-                        <p class="text-gray-400 text-sm">وقت الطهي</p>
-                        <p class="text-white font-bold text-xl">${recipe.cookTime}</p>
-                    </div>
-                </div>
-
-                <!-- المكونات -->
-                <div class="mb-8 p-4 bg-gray-800 rounded-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3 flex justify-between items-center">
-                        المكونات
-                        <!-- زر النسخ للمكونات -->
-                        <button onclick="handleCopyButtonClick(this, 'المكونات', ${JSON.stringify(recipe.ingredients).replace(/"/g, '&quot;')})" class="text-green-400 hover:text-green-300 text-sm font-normal">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg>
-                            نسخ القائمة
-                        </button>
-                    </h3>
-                    <ul class="list-disc list-inside space-y-1 text-gray-300">
-                        ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
-                    </ul>
-                </div>
-
-                <!-- طريقة التحضير -->
-                <div class="mb-8 p-4 bg-gray-800 rounded-lg">
-                    <h3 class="text-2xl font-semibold text-white mb-3 flex justify-between items-center">
-                        طريقة التحضير
-                        <!-- زر النسخ للخطوات -->
-                        <button onclick="handleCopyButtonClick(this, 'طريقة التحضير', ${JSON.stringify(recipe.steps).replace(/"/g, '&quot;')})" class="text-green-400 hover:text-green-300 text-sm font-normal">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-1" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg>
-                            نسخ الخطوات
-                        </button>
-                    </h3>
-                    <ol class="list-decimal list-inside space-y-2 text-gray-300">
-                        ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
-                    </ol>
-                </div>
-            `;
-        }
-        
-        // ------------------------------------------
-        // وظيفة معالجة زر النسخ المدمج
-        // ------------------------------------------
-
-        /**
-         * معالجة النقر على زر النسخ المدمج في تفاصيل الوصفة.
-         * @param {HTMLElement} button - زر النسخ الذي تم النقر عليه.
-         * @param {string} sectionName - اسم القسم المنسوخ (المكونات/الخطوات).
-         * @param {Array<string>} dataArray - مصفوفة البيانات المراد نسخها.
-         */
-        function handleCopyButtonClick(button, sectionName, dataArray) {
-            // تحويل المصفوفة إلى نص منسق (مثلاً: 1. الخطوة الأولى\n2. الخطوة الثانية...)
-            const formattedText = dataArray.map((item, index) => `${index + 1}. ${item}`).join('\n');
-            const success = copyTextToClipboard(formattedText);
-
-            if (success) {
-                const originalText = button.innerHTML;
-                button.innerHTML = '✅ تم النسخ!';
-                
-                // إعادة الزر إلى حالته الأصلية بعد 2 ثانية
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                }, 2000);
-            } else {
-                alert(`فشل نسخ ${sectionName}. يرجى المحاولة مرة أخرى أو النسخ يدوياً.`);
-            }
-        }
-
-        // تشغيل التطبيق: عرض قائمة الوصفات عند تحميل الصفحة
-        window.onload = () => {
-            displayRecipes(recipes);
-            // يمكنك تعيين وصفة افتراضية للعرض عند التحميل إذا أردت
-            // displayRecipeDetails(recipes[0]);
-        };
-    </script>
+        <!-- بطاقة الأكلات العالمية -->
+        <a href="international.html" class="card">
+            <h2>🌍 أكلات عالمية (20 وصفة)</h2>
+            <p>اكتشف أطباقاً عالمية مشهورة من إيطاليا والمكسيك والصين.</p>
+        </a>
+    </main>
 </body>
 </html>
