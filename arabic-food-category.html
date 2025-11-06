@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتالوج الوصفات العربية</title>
+    <!-- تحميل Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- إعداد خط Inter المناسب للغة العربية والأرقام اللاتينية -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f3ee; /* لون خلفية ترابي فاتح */
+        }
+        /* تخصيص بسيط لـ Tailwind */
+        .recipe-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .recipe-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-detail-list li {
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        .recipe-detail-list li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: #b91c1c; /* لون مميز */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#935c3c]">مأكولات ومقبلات عربية أصيلة</h1>
+            <p class="mt-2 text-lg text-gray-600">تصفح مجموعة من أشهى الوصفات من مختلف المطابخ.</p>
+        </header>
+
+        <!-- أدوات البحث والتصفية -->
+        <div class="flex flex-col md:flex-row gap-4 mb-8 bg-white p-4 rounded-xl shadow-lg">
+            <input type="text" id="searchInput" placeholder="ابحث بالاسم أو الوصف..."
+                   class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#935c3c] focus:border-[#935c3c] transition duration-150 text-right"
+                   oninput="filterRecipes()">
+            
+            <select id="categoryFilter" class="w-full md:w-56 p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-[#935c3c] focus:border-[#935c3c] transition duration-150"
+                    onchange="filterRecipes()">
+                <option value="all">جميع الفئات</option>
+                <!-- يتم ملء الخيارات بواسطة JavaScript -->
+            </select>
+        </div>
+
+        <!-- منطقة عرض الوصفات -->
+        <div id="recipesContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- سيتم ملء البطاقات بواسطة JavaScript -->
+        </div>
+
+        <!-- رسالة عدم وجود نتائج -->
+        <div id="noResults" class="hidden text-center mt-12 p-6 bg-yellow-100 border border-yellow-300 rounded-lg text-yellow-800">
+            <p class="text-xl font-semibold">عذراً، لم يتم العثور على أي وصفات مطابقة لمعايير البحث.</p>
+        </div>
+
+        <!-- مودال تفاصيل الوصفة -->
+        <div id="recipeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform transition-all p-6 md:p-8 relative">
+                
+                <!-- زر الإغلاق -->
+                <button onclick="closeModal()" class="absolute top-4 left-4 text-gray-500 hover:text-gray-900 transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+
+                <!-- محتوى المودال -->
+                <div id="modalContent">
+                    <!-- سيتم ملء التفاصيل هنا -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // البيانات المقدمة من المستخدم (تم ترميزها مباشرة)
+        const recipes = [{"id": 1,"name": "المنسف الأردني","description": "طبق الأرز واللحم المطهو بالجميد، وهو الأكلة الوطنية للأردن.","prepTime": "30 دقيقة","cookTime": "90 دقيقة","servings": "6 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/935c3c/FFFFFF?text=المنسف+الاردني","ingredients": ["1.5 كجم لحم ضأن","1 كجم جميد سائل","2 كوب أرز مصري","صنوبر وبقدونس للتزيين"],"instructions": ["نقع الأرز وسلقه.","سلق اللحم.","طهي اللحم بالجميد.","التقديم مع خبز الشراك."]},{"id": 2,"name": "المقلوبة الفلسطينية","description": "طبق مقلوب من الأرز والباذنجان واللحم أو الدجاج، يُقدم في شكل طبقات.","prepTime": "45 دقيقة","cookTime": "60 دقيقة","servings": "4 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/6A5ACD/FFFFFF?text=المقلوبة+الفلسطينية","ingredients": ["دجاجة كاملة","2 حبة باذنجان كبير مقلي","2 كوب أرز","بهارات مقلوبة"],"instructions": ["سلق الدجاج.","رص الباذنجان والدجاج.","وضع الأرز والمرق.","قلب القدر للتقديم."]},{"id": 3,"name": "الفتوش اللبناني","description": "سلطة منعشة مع الخضار الموسمية وقطع الخبز المقلي أو المحمص.","prepTime": "15 دقيقة","cookTime": "0 دقيقة","servings": "4 أشخاص","category": "سلطة","imageUrl": "https://placehold.co/600x400/38761D/FFFFFF?text=الفتوش+اللبناني","ingredients": ["خس، طماطم، خيار","خبز مقلي","عصير ليمون وزيت زيتون","سماق ودبس رمان"],"instructions": ["تقطيع الخضروات.","تحضير الصلصة.","خلط المكونات والتقديم."]},{"id": 4,"name": "الكبسة السعودية","description": "طبق الأرز واللحم أو الدجاج المتبل بمزيج بهارات الكبسة الشهير.","prepTime": "25 دقيقة","cookTime": "75 دقيقة","servings": "8 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/FFB400/333333?text=الكبسة+السعودية","ingredients": ["دجاجة كاملة أو 1 كجم لحم","3 أكواب أرز بسمتي","بهارات كبسة","لوز وزبيب للتزيين"],"instructions": ["قلي البصل واللحم/الدجاج.","سلق اللحم.","طهي الأرز في المرق.","التقديم والتزيين."]},{"id": 5,"name": "الحمص بالطحينة","description": "مقبلات شامية شهيرة من الحمص المطحون مع الطحينة وعصير الليمون.","prepTime": "10 دقائق","cookTime": "5 دقائق","servings": "4 أشخاص","category": "مقبلات","imageUrl": "https://placehold.co/600x400/F0E68C/333333?text=حمص+بالطحينة","ingredients": ["2 كوب حمص مسلوق","نصف كوب طحينة","عصير ليمون، ثوم","زيت زيتون وبابريكا"],"instructions": ["خلط الحمص والطحينة والثوم والليمون.","إضافة الماء البارد للوصول للقوام الكريمي.","التقديم مع الزيت والبابريكا."]},{"id": 6,"name": "التبولة اللبنانية","description": "سلطة غنية بالبقدونس المفروم والبرغل والطماطم والنعناع.","prepTime": "20 دقيقة","cookTime": "0 دقيقة","servings": "4 أشخاص","category": "سلطة","imageUrl": "https://placehold.co/600x400/228B22/FFFFFF?text=التبولة+الطازجة","ingredients": ["3 باقات بقدونس مفروم","نصف كوب برغل ناعم","2 حبة طماطم","عصير ليمون وزيت زيتون"],"instructions": ["نقع البرغل.","فرم الخضروات ناعماً.","خلط المكونات وتقديمها باردة."]},{"id": 7,"name": "المحشي المصري","description": "خضروات متنوعة (كوسة، فلفل، باذنجان) محشوة بالأرز والتوابل.","prepTime": "60 دقيقة","cookTime": "60 دقيقة","servings": "6 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/8B0000/FFFFFF?text=المحشي+المصري","ingredients": ["خضروات مقورة","2 كوب أرز مصري","شبت وبقدونس وكزبرة","مرق دجاج"],"instructions": ["خلط مكونات الحشوة.","حشو الخضروات.","رص الخضروات وسقيها بالمرق.","الطهي حتى النضج."]},{"id": 9,"name": "البسبوسة بالقشطة","description": "حلوى شرقية من السميد المحلى والمحشو بالقشطة الكريمية.","prepTime": "20 دقيقة","cookTime": "30 دقيقة","servings": "10 قطع","category": "حلويات","imageUrl": "https://placehold.co/600x400/F3E5AB/8B4513?text=بسبوسة+وقشطة","ingredients": ["كوب ونصف سميد","نصف كوب سكر وزبادي","قشطة جاهزة للحشو","قطر (شيرة) بارد"],"instructions": ["خلط مكونات البسبوسة.","الخبز على طبقتين مع حشو القشطة.","الخبز والسقي بالقطر البارد."]},{"id": 16,"name": "المجدرة (أرز وعدس)","description": "طبق نباتي تقليدي من الأرز والعدس والبصل المقلي المقرمش.","prepTime": "20 دقيقة","cookTime": "40 دقيقة","servings": "4 أشخاص","category": "نباتي","imageUrl": "https://placehold.co/600x400/8B4513/FFFFFF?text=المجدرة+بالبصل","ingredients": ["كوب عدس بني","كوب أرز طويل الحبة","3 حبات بصل كبيرة للقلي","زيت زيتون، ملح، كمون"],"instructions": ["سلق العدس نصف سلقة.","قلي البصل.","طهي الأرز مع العدس.","التقديم مع البصل المقلي."]},{"id": 18,"name": "ورق العنب (يالنجي)","description": "أوراق عنب محشوة بالخضار والأرز، تُقدم باردة.","prepTime": "60 دقيقة","cookTime": "90 دقيقة","servings": "4 أشخاص","category": "مقبلات/نباتي","imageUrl": "https://placehold.co/600x400/556B2F/FFFFFF?text=ورق+عنب+يالنجي","ingredients": ["مرطبان ورق عنب","1 كوب أرز مصري","بقدونس، طماطم، نعناع مفروم","عصير ليمون، دبس رمان"],"instructions": ["نقع الورق وتجهيز الحشوة.","لف الورق ورصه في القدر.","الطهي على نار هادئة."]},{"id": 11,"name": "بابا غنوج","description": "مقبلات شامية من الباذنجان المشوي والمهروس مع الطحينة وعصير الليمون.","prepTime": "15 دقيقة","cookTime": "20 دقيقة","servings": "4 أشخاص","category": "مقبلات","imageUrl": "https://placehold.co/600x400/600060/FFFFFF?text=بابا+غنوج","ingredients": ["2 حبة باذنجان كبير مشوي","ربع كوب طحينة","عصير نصف ليمونة","ثوم مهروس، زيت زيتون"],"instructions": ["شوي الباذنجان وتقشيره.","هرس الباذنجان وخلطه مع باقي المكونات.","التتبيل والتقديم في طبق مسطح."]},{"id": 12,"name": "سلطة الجرجير بدبس الرمان","description": "سلطة خفيفة وصحية من أوراق الجرجير الطازجة مع صلصة دبس الرمان الحامضة الحلوة.","prepTime": "10 دقائق","cookTime": "0 دقيقة","servings": "3 أشخاص","category": "سلطة","imageUrl": "https://placehold.co/600x400/8BC34A/000000?text=سلطة+الجرجير","ingredients": ["حزمة جرجير طازج","حبات رمان","بصل مقطع شرائح رفيعة","صلصة: زيت زيتون ودبس رمان وليمون"],"instructions": ["غسل وتجفيف الجرجير.","توزيع مكونات السلطة.","تحضير وصب الصلصة قبل التقديم مباشرة."]},{"id": 13,"name": "كنافة نابلسية","description": "حلوى شرقية شهيرة مصنوعة من عجينة الكنافة الناعمة والجبنة المغلية، وتسقى بالقطر.","prepTime": "30 دقيقة","cookTime": "30 دقيقة","servings": "8 قطع","category": "حلويات","imageUrl": "https://placehold.co/600x400/E9967A/000000?text=كنافة+نابلسية","ingredients": ["نصف كجم كنافة شعر","300 جم جبنة عكاوي محلاة","سمن بلدي أو زبدة","قطر (شيرة) ساخن"],"instructions": ["تلوين الكنافة بالسمن.","رص الطبقة الأولى والجبنة ثم الطبقة الثانية.","الخبز أو الطهي على النار مباشرة.","السقي بالقطر والتقديم ساخنة."]},{"id": 14,"name": "يخني البامية باللحم","description": "مرق مطبوخ من البامية واللحم والطماطم، طبق رئيسي شائع في مصر والشام.","prepTime": "20 دقيقة","cookTime": "90 دقيقة","servings": "5 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/556B2F/FFFFFF?text=يخني+البامية","ingredients": ["1 كجم بامية","0.5 كجم لحم بقري مكعبات","صلصة طماطم","ثوم وكزبرة خضراء"],"instructions": ["سلق اللحم.","قلي البامية مع الثوم والكزبرة.","إضافة الصلصة والمرق واللحم.","الطهي حتى تتكثف الصلصة."]},{"id": 15,"name": "شوربة العدس المصرية","description": "شوربة دافئة ومغذية من العدس الأصفر والخضروات الأساسية، تُقدم في الشتاء.","prepTime": "10 دقائق","cookTime": "40 دقيقة","servings": "4 أشخاص","category": "حساء/نباتي","imageUrl": "https://placehold.co/600x400/FFD700/000000?text=شوربة+العدس","ingredients": ["كوب عدس أصفر","بصل، جزر، بطاطا","كمون، ملح، فلفل","خبز محمص للتقديم"],"instructions": ["سلق العدس والخضروات.","خلط المكونات حتى تصبح ناعمة.","التسخين والتقديم مع رشة كمون وخبز محمص."]},{"id": 17,"name": "كرات اللحم بالكفتة (داوود باشا)","description": "كرات لحم مفروم مطبوخة في صلصة طماطم غنية، تُقدم عادةً مع الأرز الأبيض.","prepTime": "20 دقيقة","cookTime": "40 دقيقة","servings": "4 أشخاص","category": "رئيسية","imageUrl": "https://placehold.co/600x400/B22222/FFFFFF?text=كرات+الكفتة","ingredients": ["0.5 كجم لحم مفروم","بصل مفروم ناعم","بهارات مشكلة","عصير طماطم مكثف"],"instructions": ["خلط مكونات الكفتة وتشكيلها كرات.","تحمير الكرات.","طهي كرات اللحم في صلصة الطماطم."]},{"id": 19,"name": "سلطة الحمص","description": "حبوب حمص مسلوقة متبلة بالليمون والثوم والبقدونس، سلطة جانبية شهية.","prepTime": "10 دقائق","cookTime": "0 دقيقة","servings": "4 أشخاص","category": "سلطة/نباتي","imageUrl": "https://placehold.co/600x400/DAA520/FFFFFF?text=سلطة+حمص","ingredients": ["2 كوب حمص مسلوق","بقدونس مفروم","ثوم، عصير ليمون","زيت زيتون، كمون"],"instructions": ["خلط كل المكونات مع التتبيلة.","التقديم باردة كطبق جانبي."]},{"id": 20,"name": "السمبوسة بالجبنة (مقبلات)","description": "مقبلات مقلية أو مخبوزة على شكل مثلثات محشوة بالجبن الأبيض والنعناع.","prepTime": "30 دقيقة","cookTime": "15 دقيقة","servings": "12 قطعة","category": "مقبلات","imageUrl": "https://placehold.co/600x400/CD853F/FFFFFF?text=سمبوسة+جبنة","ingredients": ["عجينة سمبوسة جاهزة","جبنة بيضاء (عكاوي أو نابلسية)","بقدونس أو نعناع مفروم"],"instructions": ["تحضير حشوة الجبنة.","حشو العجينة وإغلاقها.","القلي أو الخبز حتى الاحمرار."]},{"id": 21,"name": "المحلبية (حلوى الأرز والحليب)","description": "حلوى باردة وكريمية أساسها الحليب والأرز المطحون، مزينة بالمكسرات.","prepTime": "10 دقائق","cookTime": "30 دقيقة","servings": "4 أكواب","category": "حلويات","imageUrl": "https://placehold.co/600x400/F0FFF0/808000?text=المحلبية","ingredients": ["4 أكواب حليب","نصف كوب أرز مطحون أو نشا","سكر حسب الرغبة","ماء ورد ومستكة"],"instructions": ["خلط المكونات الباردة.","الطهي على النار مع التحريك المستمر حتى يثخن القوام.","الصب في الأكواب والتبريد، التزيين عند التقديم."]},{"id": 22,"name": "الزيتون المتبل والجبنة","description": "طبق مقبلات بسيط من الزيتون بأنواعه مع قطع الجبنة البيضاء والأعشاب.","prepTime": "5 دقائق","cookTime": "0 دقيقة","servings": "3 أشخاص","category": "مقبلات","imageUrl": "https://placehold.co/600x400/9ACD32/FFFFFF?text=زيتون+متبل","ingredients": ["كوب زيتون أسود وأخضر","قطع جبنة فيتا أو بيضاء","زيت زيتون، أوريجانو، فلفل حار"],"instructions": ["تصفية الزيتون.","خلط الزيتون والجبنة مع الأعشاب وزيت الزيتون.","التقديم كفاتح شهية."]}];
+
+
+        const container = document.getElementById('recipesContainer');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilterSelect = document.getElementById('categoryFilter');
+        const noResultsMessage = document.getElementById('noResults');
+        const recipeModal = document.getElementById('recipeModal');
+        const modalContent = document.getElementById('modalContent');
+        
+        // --- وظائف عرض البيانات ---
+
+        function renderRecipeCard(recipe) {
+            const card = document.createElement('div');
+            card.className = 'recipe-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition duration-300';
+            card.setAttribute('onclick', `openModal(${recipe.id})`);
+            
+            // استخدام fallback/placeholder image URL provided in the JSON
+            const imageUrl = recipe.imageUrl.includes('placehold.co') ? recipe.imageUrl : `https://placehold.co/600x400/f3e5ab/333333?text=${recipe.name}`;
+            
+            card.innerHTML = `
+                <!-- صورة (يمكن استبدالها بصور حقيقية لاحقاً) -->
+                <img src="${imageUrl}" alt="${recipe.name}" class="w-full h-40 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f3e5ab/333333?text=صورة+غير+متوفرة'">
+                
+                <div class="p-5">
+                    <h2 class="text-xl font-bold text-[#935c3c] mb-2">${recipe.name}</h2>
+                    <p class="text-sm text-gray-700 h-12 overflow-hidden">${recipe.description}</p>
+                    
+                    <div class="flex flex-wrap gap-2 text-xs mt-3">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium">${recipe.category}</span>
+                        <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full">التحضير: ${recipe.prepTime}</span>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        }
+
+        function renderModalContent(recipe) {
+            modalContent.innerHTML = `
+                <h2 class="text-3xl font-bold text-[#b91c1c] mb-4">${recipe.name}</h2>
+                <p class="text-gray-700 mb-6 border-b pb-4">${recipe.description}</p>
+
+                <!-- الصورة -->
+                <img src="${recipe.imageUrl.includes('placehold.co') ? recipe.imageUrl : `https://placehold.co/800x600/f3e5ab/333333?text=${recipe.name}`}" 
+                     alt="${recipe.name}" class="w-full h-64 object-cover rounded-lg mb-6" onerror="this.onerror=null;this.src='https://placehold.co/800x600/f3e5ab/333333?text=صورة+غير+متوفرة'">
+
+                <!-- معلومات سريعة -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 text-center text-sm font-medium border-b pb-4">
+                    <div class="p-2 bg-red-50 rounded-lg text-red-700">
+                        <div class="font-bold">الفئة</div>
+                        <div>${recipe.category}</div>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded-lg text-gray-700">
+                        <div class="font-bold">وقت التحضير</div>
+                        <div>${recipe.prepTime}</div>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded-lg text-gray-700">
+                        <div class="font-bold">وقت الطهي</div>
+                        <div>${recipe.cookTime}</div>
+                    </div>
+                    <div class="p-2 bg-gray-50 rounded-lg text-gray-700">
+                        <div class="font-bold">عدد الوجبات</div>
+                        <div>${recipe.servings}</div>
+                    </div>
+                </div>
+
+                <!-- المكونات -->
+                <div class="mb-6">
+                    <h3 class="text-2xl font-semibold text-[#935c3c] mb-3">المكونات:</h3>
+                    <ul class="recipe-detail-list space-y-2 text-gray-700">
+                        ${recipe.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <!-- طريقة التحضير -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-[#935c3c] mb-3">طريقة التحضير:</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700 pr-5">
+                        ${recipe.instructions.map(inst => `<li class="font-medium">${inst}</li>`).join('')}
+                    </ol>
+                </div>
+            `;
+        }
+
+        // --- وظائف التصفية والبحث ---
+
+        function filterRecipes() {
+            container.innerHTML = '';
+            const searchText = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categoryFilterSelect.value;
+            let resultsCount = 0;
+
+            recipes.forEach(recipe => {
+                const nameMatch = recipe.name.toLowerCase().includes(searchText);
+                const descriptionMatch = recipe.description.toLowerCase().includes(searchText);
+                const categoryMatch = selectedCategory === 'all' || recipe.category.includes(selectedCategory);
+
+                if ((nameMatch || descriptionMatch) && categoryMatch) {
+                    renderRecipeCard(recipe);
+                    resultsCount++;
+                }
+            });
+
+            // عرض/إخفاء رسالة عدم وجود نتائج
+            if (resultsCount === 0) {
+                noResultsMessage.classList.remove('hidden');
+            } else {
+                noResultsMessage.classList.add('hidden');
+            }
+        }
+
+        // --- وظائف المودال (النافذة المنبثقة) ---
+
+        function openModal(id) {
+            const recipe = recipes.find(r => r.id === id);
+            if (recipe) {
+                renderModalContent(recipe);
+                recipeModal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // لمنع التمرير خلف المودال
+            }
+        }
+
+        function closeModal() {
+            recipeModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // إغلاق المودال عند النقر خارج المحتوى
+        recipeModal.addEventListener('click', (e) => {
+            if (e.target === recipeModal) {
+                closeModal();
+            }
+        });
+
+        // إغلاق المودال عند الضغط على زر Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !recipeModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+
+        // --- الإعداد الأولي ---
+
+        function initializeApp() {
+            // ملء خيارات الفلترة بالفئات الفريدة
+            const categories = [...new Set(recipes.map(r => r.category))];
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categoryFilterSelect.appendChild(option);
+            });
+
+            // عرض جميع الوصفات عند تحميل الصفحة
+            filterRecipes();
+        }
+
+        window.onload = initializeApp;
+
+    </script>
+</body>
+</html>
